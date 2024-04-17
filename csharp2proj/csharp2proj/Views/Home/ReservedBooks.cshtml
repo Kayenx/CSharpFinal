@@ -1,0 +1,39 @@
+﻿@using ORMLib
+@model List<Reservation>
+
+    @{
+        ViewData["Title"] = "Vaše rezervace";
+    }
+
+    <h2 class="display-4">Vaše rezervace</h2>
+
+    @if (Model.Count == 0)
+    {
+        <p>Právě nemáte žádné rezervace</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Kniha</th>
+                    <th>Začátek rezervace</th>
+                    <th>Konec rezervace</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reservation in Model)
+                {
+                    <tr>
+                        <td>@reservation.Book_Name</td>
+                        <td>@reservation.Start.ToShortDateString()</td>
+                        <td>@reservation.End.ToShortDateString()</td>
+                        <td>
+
+                            <button class="btn btn-primary" type="submit">@Html.ActionLink("Zrušit rezervaci", "DeleteReservation", "Home", new { reservation_id = reservation.ID }, new { style = "color:black;" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }

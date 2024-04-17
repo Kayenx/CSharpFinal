@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Knihovna";
+}
+
+@if (ViewContext.HttpContext.Session.GetString("username") == null)
+{
+    <h1 class="display-4">Vítejte v knihovně</h1>
+    <p>Přihlašte se prosím</p>
+}
+else
+{
+    <h1 class="display-4">Vítej @ViewContext.HttpContext.Session.GetString("username")</h1>
+    <button class="btn btn-primary" type="submit">@Html.ActionLink("Rezervace", "Reservation", "Home", null, new { style = "text-decoration:none;color:black;" }) </button>
+    <button class="btn btn-primary" type="submit">@Html.ActionLink("Vaše Rezervace", "ReservedBooks", "Home", null, new { style = "text-decoration:none;color:black;" }) </button>
+    <button class="btn btn-primary" type="submit">@Html.ActionLink("Odhlásit", "LogOut", "Home", null, new { style = "text-decoration:none;color:black;" }) </button>
+}

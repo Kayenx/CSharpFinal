@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Mvc
+@model LoginForm
+
+@{
+    ViewData["Title"] = "Přihlášení";
+}
+
+<h1>Přihlášení </h1>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Username, new { @for = "username" })
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control", @id = "username" })
+        @Html.ValidationMessageFor(x => x.Username)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Password, new { @for = "password" })
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control", @id = "password" })
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+
+    <div class="form-group" style="padding-top:10px">
+        <button class="btn btn-primary" type="submit">Přihlásit</button>
+    </div>
+}

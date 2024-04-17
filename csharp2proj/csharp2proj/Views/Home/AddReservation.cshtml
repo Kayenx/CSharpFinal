@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Mvc
+@model ReservationForm
+
+@{
+    ViewData["Title"] = "Vytvoření rezervace";
+}
+
+<h1>Rezervace </h1>
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Start, new { @for = "start" })
+        @Html.TextBoxFor(x => x.Start, new { @class = "form-control", @id = "start" })
+        @Html.ValidationMessageFor(x => x.Start)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.End, new { @for = "end" })
+        @Html.TextBoxFor(x => x.End, new { @class = "form-control", @id = "end" })
+        @Html.ValidationMessageFor(x => x.End)
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Rezervovat</button>
+        </div>
+    </div>
+}
